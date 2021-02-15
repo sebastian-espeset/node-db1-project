@@ -1,10 +1,11 @@
 const express = require("express");
-
+const Accounts = require('./accounts-models')
 const router = express.Router();
 
-router.get('/',(req,res)=>{
+router.get('/', async (req,res)=>{
     try{
-        Accounts.get()
+    const data = await  Accounts.get()
+    res.json(data)
     } catch(error){
         res.status(400).json({message:`${error}`})
     }
