@@ -20,11 +20,18 @@ const update = (id, changes) =>{
             .then(()=>{
                 return db("accounts").where("id", accountId).first();
             }) 
+}
+const remove = (id)=>{
+    return db("accounts").where("id",id).del()
+        .then(()=>{
+            return db("accounts")
+        })
 }   
 
 module.exports={
     get,
     getById,
     create,
-    update
+    update,
+    remove
 }
