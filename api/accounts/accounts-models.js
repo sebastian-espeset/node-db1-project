@@ -13,10 +13,18 @@ const create=(newAccount)=>{
         .then(([id])=>{
             return db("accounts").where("id",id).first();
         })
+}
+const update = (id, changes) =>{
+    const accountId = id;
+        return db("accounts").where("id",id).update(changes)
+            .then(()=>{
+                return db("accounts").where("id", accountId).first();
+            }) 
 }   
 
 module.exports={
     get,
     getById,
-    create
+    create,
+    update
 }
